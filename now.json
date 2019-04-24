@@ -2,6 +2,7 @@
     "version": 2,
     "name": "mororo",
     "alias": "mororo",
+    "regions": ["cdg1"],
     "routes": [
       { "src": "/mattermost", "dest": "/entry/mattermost.js" }
     ],
