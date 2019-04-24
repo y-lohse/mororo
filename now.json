@@ -1,10 +1,14 @@
 {
     "version": 2,
     "name": "mororo",
+    "alias": "mororo",
     "routes": [
       { "src": "/mattermost", "dest": "/entry/mattermost.js" }
     ],
     "builds": [
         { "src": "/entry/*.js", "use": "@now/node" }
-    ]
+    ],
+    "env": {
+      "RUNDECK_URL": "https://rundeck.cozycloud.cc"
+    }
 }
