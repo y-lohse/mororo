@@ -9,6 +9,8 @@
         { "src": "/entry/*.js", "use": "@now/node" }
     ],
     "env": {
-      "RUNDECK_URL": "https://rundeck.cozycloud.cc"
+      "RUNDECK_URL": "https://rundeck.cozycloud.cc",
+      "RUNDECK_TOKEN": "@rundeck-token",
+      "MATTERMOST_VERIFICATION_TOKEN": "@mattermost-token"
     }
 }

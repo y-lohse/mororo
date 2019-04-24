@@ -23,10 +23,11 @@ const createMessagePoster = url => text => {
   })
 }
 
-app.post('/', async (req, res) => {
+app.post('/mattermost', async (req, res) => {
   const { token, text, response_url } = req.body
 
   if (token !== MATTERMOST_VERIFICATION_TOKEN) {
+    console.warn(`Rejected a request with token ${token}`);
     return res.status(400).end('Wrong token')
   } else {
     const postMessage = createMessagePoster(response_url)
