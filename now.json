@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "mororo",
+    "routes": [
+      { "src": "/mattermost", "dest": "/entry/mattermost.js" }
+    ],
+    "builds": [
+        { "src": "/entry/*.js", "use": "@now/node" }
+    ]
+}

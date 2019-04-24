@@ -1,0 +1,32 @@
+{
+  "name": "mororo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "entry/mattermost.js",
+  "scripts": {
+    "lint": "eslint '*/**.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y-lohse/mororo.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/y-lohse/mororo/issues"
+  },
+  "homepage": "https://github.com/y-lohse/mororo#readme",
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fast-xml-parser": "^3.12.16",
+    "helmet": "^3.16.0",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.3.0",
+    "sentencer": "^0.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-cozy-app": "^1.1.12"
+  }
+}
