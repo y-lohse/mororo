@@ -15,7 +15,7 @@ const commandHandler = async (args, postMessage) => {
     source
   })
   const appURL = insertSluginUrl(instance, slug)
-  return toMattermost(`✅ Ready to test: ${appURL}`)
+  return `✅ Ready to test: ${appURL}`
 }
 
 module.exports = {

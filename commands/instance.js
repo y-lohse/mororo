@@ -8,7 +8,29 @@ const commandHandler = async (args, postMessage) => {
   const { fqdn, passphrase } = await createInstance({
     instanceSuffix: instanceName
   })
-  return toMattermost(`✅ Now yours: https://${fqdn} | \`${passphrase}\``)
+  const instanceWithProtocol = `https://${fqdn}`
+  const r = await postMessage(
+    toMattermost({
+      text: `✅ Now yours: ${instanceWithProtocol} | \`${passphrase}\``,
+      attachments: {
+        text: `Remember to delete the instance once you're done with it. Use \`/mororo remove ${instanceWithProtocol}\` or click the button below.`,
+        actions: [
+          {
+            name: `Delete ${fqdn}`,
+            integration: {
+              url: 'https://mororo.now.sh/test',
+              context: {
+                action: 'do_something_ephemeral'
+              }
+            }
+          }
+        ]
+      }
+    })
+  )
+  console.log(await r.text());
+
+  return `✅ Now yours: ${instanceWithProtocol} | \`${passphrase}\``
 }
 
 module.exports = {

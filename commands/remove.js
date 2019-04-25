@@ -13,7 +13,7 @@ const remove = async (args, postMessage) => {
     await deleteInstance({
       instanceSuffix
     })
-    return toMattermost(`🗑 Deleted instance ${instance}`)
+    return `🗑 Deleted instance ${instance}`
   } else {
     throw new Error('Not a test instance')
   }
