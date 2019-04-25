@@ -1,5 +1,6 @@
 const { deleteInstance } = require('../lib/rundeck')
 const { getFQDN } = require('../lib/url')
+const toMattermost = require('../lib/mattermostFormatter')
 
 const remove = async (args, postMessage) => {
   const instance = args.get('instance')
@@ -8,11 +9,11 @@ const remove = async (args, postMessage) => {
   if (/^testauto/.test(fqdn)) {
     const instanceName = fqdn.split('.')[0]
     const instanceSuffix = instanceName.substr('testauto'.length)
-    await postMessage(`⏳ About to delete instance ${instance}`)
+    await postMessage(toMattermost(`⏳ About to delete instance ${instance}`))
     await deleteInstance({
       instanceSuffix
     })
-    return `🗑 Deleted instance ${instance}`
+    return toMattermost(`🗑 Deleted instance ${instance}`)
   } else {
     throw new Error('Not a test instance')
   }

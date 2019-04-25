@@ -1,5 +1,6 @@
 const { upgradeApp } = require('../lib/rundeck')
 const { getFQDN, insertSluginUrl } = require('../lib/url')
+const toMattermost = require('../lib/mattermostFormatter')
 
 const commandHandler = async (args, postMessage) => {
   const source = args.get('source')
@@ -7,14 +8,14 @@ const commandHandler = async (args, postMessage) => {
   const instance = args.get('instance')
   const fqdn = getFQDN(instance)
 
-  await postMessage(`⏳ Installing ${slug} on ${instance}`)
+  await postMessage(toMattermost(`⏳ Installing ${slug} on ${instance}`))
   await upgradeApp({
     instance: fqdn,
     slug,
     source
   })
   const appURL = insertSluginUrl(instance, slug)
-  return `✅ Ready to test: ${appURL}`
+  return toMattermost(`✅ Ready to test: ${appURL}`)
 }
 
 module.exports = {

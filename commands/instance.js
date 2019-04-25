@@ -1,13 +1,14 @@
 const Sentencer = require('sentencer')
 const { createInstance } = require('../lib/rundeck')
+const toMattermost = require('../lib/mattermostFormatter')
 
 const commandHandler = async (args, postMessage) => {
   const instanceName = Sentencer.make('{{ adjective }}{{ noun }}')
-  await postMessage(`⏳ Creating instance ${instanceName}`)
+  await postMessage(toMattermost(`⏳ Creating instance ${instanceName}`))
   const { fqdn, passphrase } = await createInstance({
     instanceSuffix: instanceName
   })
-  return `✅ Now yours: https://${fqdn} | \`${passphrase}\``
+  return toMattermost(`✅ Now yours: https://${fqdn} | \`${passphrase}\``)
 }
 
 module.exports = {
